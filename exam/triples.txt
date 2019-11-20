@@ -1,0 +1,11 @@
+n1,p1,n2
+n2,p2,n3
+n3,p3,n2
+n3,p4,c
+m1,p1,m2
+m2,p2,m3
+m3,p3,m2
+m3,p4,c
+c,p5,n4
+c,p5,m4
+n4,p6,m4
