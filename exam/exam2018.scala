@@ -8,6 +8,13 @@ val compteParGenre = tuples.map(x=> (x._3,1)).reduceByKey(_+_)
 //q2
 val res = triples.filter("prop='p1'").as("t1").join(triples.as("t2"),$"t2.sujet"===$"t1.objet").select($"t1.sujet",$"t2.objet").as("t").join(triples.as("t3"),$"t3.sujet"===$"t.objet").select($"t.sujet",$"t.objet").distinct()
 
+// tester celle-ci
+val p1 = triples.filter("prop='p1'")
+val p2 = triples.filter("prop='p2'")
+val p3 = triples.filter("prop='p3'")
+
+val j1 = p1.as("t1").join(p2.as("t2"), $"t1.objet"===$"t2.sujet").select($"t1.sujet",$"t2.sujet" as "y", $"t2.objet" as "z")
+val res = j1.as("t1").join(p3.as("t1"), $"t1.z"===$"t2.sujet" && $"t1.y"=== $"t2.objet").select($"t1.sujet",$"t2.sujet")
 
 //q3
 
